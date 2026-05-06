@@ -1,9 +1,9 @@
-const app = require('./app');
+const app = require('../api_internal/app');
 const http = require('http');
 const socketIO = require('socket.io');
-const pool = require('./config/database');
-const { initializeDatabase } = require('./config/schema');
-const { decryptMessage } = require('./utils/encryption');
+const pool = require('../api_internal/config/database');
+const { initializeDatabase } = require('../api_internal/config/schema');
+const { decryptMessage } = require('../api_internal/utils/encryption');
 
 const PORT = process.env.PORT || 5000;
 
