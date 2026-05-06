@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { Button, Input } from '../components/common';
+import { API_BASE } from '../utils/api';
 import { HiMail, HiLockClosed, HiArrowRight } from 'react-icons/hi';
 import brandingImage from './RA_branding.png';
 
@@ -33,7 +34,7 @@ const LoginPage = () => {
 
   const handleOAuthLogin = (provider) => {
     if (provider === 'Google') {
-      window.location.href = 'http://localhost:5000/auth/oauth/google';
+      window.location.href = `${API_BASE}/auth/oauth/google`;
     } else {
       alert(`${provider} OAuth is not yet implemented`);
     }

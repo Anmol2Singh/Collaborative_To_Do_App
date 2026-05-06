@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { HiMail, HiLockClosed, HiArrowRight, HiUser, HiEye, HiEyeOff } from 'react-icons/hi';
+import { API_BASE } from '../utils/api';
 import backgroundImage from './taskflowbg.avif';
 import brandingImage from './RA_branding.png';
 
@@ -53,7 +54,7 @@ const AuthPage = () => {
   };
 
   const handleOAuthLogin = () => {
-    window.location.href = 'http://localhost:5000/auth/oauth/google';
+    window.location.href = `${API_BASE}/auth/oauth/google`;
   };
 
   return (

@@ -75,13 +75,13 @@ const TeamWorkflowDashboard = () => {
           <div className="w-2.5 h-2.5 bg-yellow-500 rounded-full"></div>
           <div className="w-2.5 h-2.5 bg-green-500 rounded-full"></div>
         </div>
-        <span className="text-xs text-slate-400 ml-2">Team Workflow: April 2024 | Current Sprint: Gamma-X</span>
+        <span className="text-xs text-slate-400 ml-2 truncate">Team Workflow: April 2024 | Current Sprint: Gamma-X</span>
       </div>
 
       {/* Main Content */}
-      <div className="flex h-80">
+      <div className="flex flex-col md:flex-row h-auto md:h-80">
         {/* Left Sidebar */}
-        <div className="w-40 border-r border-slate-700 bg-slate-800 p-3 overflow-y-auto">
+        <div className="hidden md:block w-40 border-r border-slate-700 bg-slate-800 p-3 overflow-y-auto">
           <div className="mb-4">
             <h3 className="text-xs font-semibold text-slate-300 mb-2 px-2">ACTIVE PROJECTS</h3>
             <div className="space-y-1">
@@ -109,20 +109,20 @@ const TeamWorkflowDashboard = () => {
         </div>
 
         {/* Center Calendar */}
-        <div className="flex-1 border-r border-slate-700 bg-slate-800 p-4">
-          <div className="mb-3">
+        <div className="flex-1 border-b md:border-b-0 md:border-r border-slate-700 bg-slate-800 p-4">
+          <div className="mb-3 flex justify-between items-center">
             <span className="text-sm font-semibold text-slate-200">April 2024</span>
+            <span className="md:hidden text-xs text-slate-400">Swipe to see details</span>
           </div>
           <div className="grid grid-cols-7 gap-1 text-center mb-2">
             {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((d, i) => (
               <span key={i} className="text-xs font-medium text-slate-500">{d}</span>
             ))}
           </div>
-          <div className="grid grid-cols-7 gap-1">
+          <div className="grid grid-cols-7 gap-1 md:gap-2">
             {days.map((day) => {
               const isCompleted = completedDays.includes(day);
               const isSelected = day === selectedDay;
-              const isFuture = day > selectedDay;
               
               return (
                 <div
@@ -146,7 +146,7 @@ const TeamWorkflowDashboard = () => {
         </div>
 
         {/* Right Sidebar - Task Details */}
-        <div className="w-44 bg-slate-800 border-l border-slate-700 p-4 overflow-y-auto">
+        <div className="hidden lg:block w-44 bg-slate-800 p-4 overflow-y-auto">
           <div className="mb-4">
             <h4 className="text-xs font-semibold text-slate-300 mb-3">TASK #14 FINAL CODE</h4>
             <p className="text-xs text-slate-400 mb-3">Review (Maria L.)</p>
@@ -208,7 +208,7 @@ const HomePage = () => {
             </div>
 
             {/* Center Navigation */}
-            <div className="flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-8">
               <button className="text-sm text-slate-300 hover:text-cyan-400 font-medium transition-colors">Features</button>
               <button className="text-sm text-slate-300 hover:text-cyan-400 font-medium transition-colors">Pricing</button>
               <button className="text-sm text-slate-300 hover:text-cyan-400 font-medium transition-colors">Solutions</button>
@@ -216,16 +216,16 @@ const HomePage = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               <Link
                 to="/login"
-                className="px-4 py-2 text-slate-300 hover:text-white font-medium transition-colors"
+                className="hidden sm:block px-4 py-2 text-slate-300 hover:text-white font-medium transition-colors"
               >
                 Sign In
               </Link>
               <Link
                 to="/register"
-                className="px-6 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all"
+                className="px-4 sm:px-6 py-2 text-sm sm:text-base bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all"
               >
                 Get Started
               </Link>
@@ -235,29 +235,29 @@ const HomePage = () => {
       </nav>
 
       {/* Hero Section */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 md:pt-20 pb-16">
         <div className="text-center">
           {/* Badge with Glow */}
-          <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-slate-800/50 border border-cyan-500/30 rounded-full mb-8 backdrop-blur-sm hover:border-cyan-400/50 transition-colors">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2.5 bg-slate-800/50 border border-cyan-500/30 rounded-full mb-6 md:mb-8 backdrop-blur-sm hover:border-cyan-400/50 transition-colors">
             <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
-            <span className="text-sm font-medium text-cyan-300">✨ #1 Team Task Management Platform</span>
+            <span className="text-xs sm:text-sm font-medium text-cyan-300">✨ #1 Team Task Management Platform</span>
           </div>
           
           {/* Main Heading */}
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 md:mb-8 leading-tight">
             Collaborate Better,{' '}
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent animate-pulse">
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent animate-pulse block sm:inline">
               Ship Faster
             </span>
           </h1>
           
           {/* Subheading */}
-          <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-12 leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed px-2 sm:px-0">
             The modern platform for teams to manage tasks, automate workflows, and measure performance — all in one place.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-12 md:mb-16 px-4 sm:px-0">
             <Link
               to="/register"
               className="group px-8 py-3.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-semibold text-lg hover:shadow-2xl hover:shadow-cyan-500/40 transition-all flex items-center gap-2"
@@ -302,7 +302,7 @@ const HomePage = () => {
       </div>
 
       {/* Features Section */}
-      <div className="relative z-10 py-24 border-t border-slate-700/50">
+      <div className="relative z-10 py-16 md:py-24 border-t border-slate-700/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -331,7 +331,7 @@ const HomePage = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="relative z-10 py-24 border-t border-slate-700/50">
+      <div className="relative z-10 py-16 md:py-24 border-t border-slate-700/50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Ready to transform your workflow?

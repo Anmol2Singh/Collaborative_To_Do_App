@@ -13,6 +13,7 @@ build/
 
 # Environment variables (Crucial for security)
 api/.env
+api_internal/.env
 .env
 .env.local
 .env.*.local

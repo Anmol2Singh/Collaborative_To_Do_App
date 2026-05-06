@@ -246,7 +246,9 @@ router.get('/oauth/google/callback',
       res.redirect(redirectUrl);
     } catch (error) {
       console.error('OAuth callback error:', error);
-      res.redirect('http://localhost:5173/login?error=authentication_failed');
+      const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+      const frontendHost = process.env.FRONTEND_URL || 'localhost:5173';
+      res.redirect(`${protocol}://${frontendHost}/login?error=authentication_failed`);
     }
   }
 );
